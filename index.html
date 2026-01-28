@@ -145,10 +145,52 @@
       color: var(--muted);
       text-shadow: 0 0 4px rgba(127, 184, 162, 0.12);
     }
+
+    /* --- Boot-up effect --- */
+
+    body {
+      opacity: 1;
+      filter: none;
+      transition:
+        opacity 0.8s ease,
+        filter 0.8s ease;
+    }
+    
+    body.booting {
+      opacity: 0;
+      filter: blur(3px) brightness(0.85);
+    }
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      body,
+      body.booting {
+        transition: none;
+        filter: none;
+      }
+    }
+    
+    /* Optional: boot status text */
+    .boot-status {
+      position: fixed;
+      bottom: 16px;
+      right: 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--green);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+    
+    body.booting .boot-status {
+      opacity: 1;
+    }
+
   </style>
 </head>
 
-<body>
+<body class="booting">
 
   <header>
     <div class="tag">BLACK MESA RESEARCH FACILITY</div>
@@ -214,6 +256,16 @@
     Black Mesa Research Facility · Software Division<br />
     “Safety, clarity, and theoretical elegance.”
   </footer>
+
+  <div class="boot-status">INITIALIZING SYSTEMS…</div>
+
+  <script>
+    window.addEventListener("load", () => {
+      requestAnimationFrame(() => {
+        document.body.classList.remove("booting");
+      });
+    });
+  </script>
 
 </body>
 </html>
