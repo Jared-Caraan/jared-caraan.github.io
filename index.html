@@ -207,9 +207,42 @@
       opacity: 1;
     }
 
+    @keyframes ambientPulse {
+      0%   { filter: brightness(1); }
+      50%  { filter: brightness(1.015); }
+      100% { filter: brightness(1); }
+    }
+    
+    body {
+      animation: ambientPulse 14s ease-in-out infinite;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      body {
+        animation: none;
+      }
+    }
+
+    .facility-noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-radial-gradient(
+          circle,
+          rgba(255,255,255,0.015),
+          rgba(255,255,255,0.015) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+      opacity: 0.15;
+      mix-blend-mode: overlay;
+    }
   </style>
 </head>
 
+<div class="facility-noise"></div>
+  
 <body class="booting">
 
   <header>
