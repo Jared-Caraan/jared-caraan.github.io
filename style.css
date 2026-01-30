@@ -1,0 +1,99 @@
+:root {
+  --bg: #0f1412;
+  --panel: #151b18;
+  --border: #26302b;
+  --text: #e6ece9;
+  --muted: #9aa6a0;
+  --accent: #f29f05;
+  --green: #7fb8a2;
+  --glow: rgba(127, 184, 162, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(127, 184, 162, 0.08), transparent 55%),
+    repeating-linear-gradient(to right,
+      rgba(255,255,255,0.02), rgba(255,255,255,0.02) 1px,
+      transparent 1px, transparent 120px),
+    repeating-linear-gradient(to bottom,
+      rgba(255,255,255,0.015), rgba(255,255,255,0.015) 1px,
+      transparent 1px, transparent 3px),
+    linear-gradient(180deg, #0d1210, #0f1412);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height: 1.6;
+}
+
+/* GLOBAL TYPOGRAPHY & LINK STYLES */
+
+a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header .tag {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--green);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 0 8px var(--glow);
+}
+
+/* PANEL */
+
+.panel {
+  background: linear-gradient(180deg, #151b18, #121715);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-left: 3px solid var(--accent);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* HEADERS */
+
+h1, h2, h3 {
+  color: var(--accent);
+}
+
+h2 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
+}
+
+.meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
