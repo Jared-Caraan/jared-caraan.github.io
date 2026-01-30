@@ -240,3 +240,40 @@ footer {
   opacity: 0.15;
   mix-blend-mode: overlay;
 }
+
+.boot-status {
+  position: fixed;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: var(--green);
+  opacity: 0.85;
+
+  text-shadow:
+    0 0 6px rgba(127, 184, 162, 0.35),
+    0 0 12px rgba(127, 184, 162, 0.15);
+
+  pointer-events: none;
+  z-index: 9999;
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+@keyframes boot-flicker {
+  0%, 100% { opacity: 0.85; }
+  45% { opacity: 0.6; }
+  50% { opacity: 0.95; }
+  55% { opacity: 0.7; }
+}
+
+body.booting .boot-status {
+  animation: boot-flicker 1.8s infinite;
+}
