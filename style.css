@@ -277,3 +277,15 @@ footer {
 body.booting .boot-status {
   animation: boot-flicker 1.8s infinite;
 }
+
+.resume-download {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.06em;
+}
+
+.resume-download::before {
+  content: "⬇ ";
+  opacity: 0.7;
+}
